@@ -1,7 +1,6 @@
 # Okta Workflows + ServiceNow Templates — Index
 
 This index covers the additional Okta Workflows + ServiceNow catalog templates included in this repository, alongside the existing **SSO Application Creation** template described in [README.md](README.md).
-
 Each template is a self-contained ServiceNow **Update Set** (remote update set XML) bundling a Service Catalog item, its Flow Designer flow, and any supporting Script Includes / catalog policies. They can be imported independently of one another.
 
 ## Available templates
