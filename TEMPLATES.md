@@ -9,15 +9,16 @@ Each template is a self-contained ServiceNow **Update Set** (remote update set X
 | Template | Folder | Description |
 | --- | --- | --- |
 | [SSO Application Creation](README.md) | `ServiceNow Application/` | Self-service request and creation of new Okta SSO applications (SAML/OIDC), with approval routing and email notifications. |
-| [Manage a Resource Owner](Manage%20Resource%20Owner/README.md) | `Manage Resource Owner/` | Assign/update resource owners (applications, entitlements, entitlement bundles) in Okta Identity Governance (OIG) from a catalog form. |
-| [Service Account Creation](Service%20Account%20Creation/README.md) | `Service Account Creation/` | Request and provision new Okta service accounts, including owner/co-owner assignment, compliance tagging, and password handling metadata. |
-| [User Group Removal](User%20Group%20Removal/README.md) | `User Group Removal/` | Bulk-remove users from Okta groups via CSV upload, with execution tracked through Flow Designer. |
+| [Manage a Resource Owner](ServiceNow%20Templates/Manage%20Resource%20Owner/README.md) | `ServiceNow Templates/Manage Resource Owner/` | Assign/update resource owners (applications, entitlements, entitlement bundles) in Okta Identity Governance (OIG) from a catalog form. |
+| [Service Account Creation](ServiceNow%20Templates/Service%20Account%20Creation/README.md) | `ServiceNow Templates/Service Account Creation/` | Request and provision new Okta service accounts, including owner/co-owner assignment, compliance tagging, and password handling metadata. |
+| [User Group Removal](ServiceNow%20Templates/User%20Group%20Removal/README.md) | `ServiceNow Templates/User Group Removal/` | Bulk-remove users from Okta groups via CSV upload, with execution tracked through Flow Designer. |
 
 ## Common prerequisites (all templates)
 
 - An Okta tenant with **Okta Workflows** enabled and the relevant Okta connector authenticated.
 - A ServiceNow instance with **Flow Designer** and **IntegrationHub** available.
 - The scoped application `x_1647345_okta_w_0` (Okta Workflows) installed, since the Script Includes in these templates live in that scope.
+- The [SSO Application Creation](README.md) template (`ServiceNow Application/`) deployed first — the other templates in this index build on the same scoped application and connector setup it establishes. 
 
 ## General import pattern
 
