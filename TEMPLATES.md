@@ -20,6 +20,17 @@ Each template is a self-contained ServiceNow **Update Set** (remote update set X
 - The scoped application `x_1647345_okta_w_0` (Okta Workflows) installed, since the Script Includes in these templates live in that scope.
 - The [SSO Application Creation](README.md) template (`ServiceNow Application/`) deployed first — the other templates in this index build on the same scoped application and connector setup it establishes. 
 
+## Authentication
+
+These templates authenticate to their Okta Workflows flows using a **Client Token** (stored in the `clientToken` System Property for each template) passed alongside the target `workFlowId`. This is the default authentication method used across all templates in this repo.
+
+All three templates (`Manage Resource Owner`, `Service Account Creation`, `User Group Removal`) call their REST steps through the **same IntegrationHub Connection Alias**. Because they share this single alias, you only need to configure authentication **once** — you don't need to set a client token per app/template.
+
+If you prefer to authenticate against your Okta Workflows/Okta org using **Auth0** (OAuth2) instead of a static client token:
+
+- Configure an OAuth2 Auth Profile (**System OAuth → Application Registry**) against your Auth0 tenant.
+- Update the shared **Connection Alias** (`x_1647345_okta_w_0.Okta_Workflows`) (used by all three Flow Designer flows) to reference that OAuth2 profile instead of the client token header. Since it's one shared alias, this single change applies to all three templates at once.
+- Retire the `clientToken` System Properties for each template once the switch is validated, since they will no longer be used for authentication.
 ## General import pattern
 
 1. **System Update Sets → Retrieved Update Sets → Import Update Set from XML**, upload the folder's `sys_remote_update_set_*.xml` file.
